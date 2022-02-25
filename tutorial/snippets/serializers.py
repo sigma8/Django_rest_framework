@@ -2,6 +2,16 @@ from rest_framework import serializers
 from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
 
 
+# Necesitamos serializar la data del snippet para poder compartirla o almacenarla
+# de manera que podamos recuperar su estado o forma original
+
+
+# Aqui se define que se va a serializar y deserializar
+# Los indicadores de campo también pueden controlar 
+# cómo se debe mostrar el serializador en determinadas circunstancias, 
+# como cuando se representa en HTML. 
+# El indicador {'base_template': 'textarea.html'} es equivalente a usar 
+# widget=widgets. Textarea en una clase de formulario de Django.
 '''
 class SnippetSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -11,6 +21,7 @@ class SnippetSerializer(serializers.Serializer):
     language = serializers.ChoiceField(choices=LANGUAGE_CHOICES, default='python')
     style = serializers.ChoiceField(choices=STYLE_CHOICES, default='friendly')
 '''
+# Usando ModelSerializers es un atajo para crear las clases serializadoras 
 class SnippetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Snippet

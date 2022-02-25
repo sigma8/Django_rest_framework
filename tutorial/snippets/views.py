@@ -10,7 +10,14 @@ from rest_framework.response import Response
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
 
+
 # Create your views here.
+
+# Usando las clases serializadoras creamos las vistas de nuestra API
+
+# El decorador @csrf_exempt se usa para poder hacer POST a la vista
+# incluso si no se tiene csrf token
+
 #@csrf_exempt
 
 @api_view(['GET', 'POST'])
